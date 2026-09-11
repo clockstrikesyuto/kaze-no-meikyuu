@@ -1,0 +1,9 @@
+{
+  "name":"風の迷宮",
+  "short_name":"風の迷宮",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#10140f",
+  "theme_color":"#10140f",
+  "icons":[]
+}
