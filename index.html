@@ -32,18 +32,19 @@
           <div class="title-actions">
             <button id="startBtn" class="primary-btn">新しい旅を始める</button>
             <button id="continueBtn" class="ghost-btn hidden">中断データから続ける</button>
+            <button id="bestiaryBtn" class="ghost-btn">魔物録を見る</button>
           </div>
           <div class="meta-grid">
             <div><span>最深到達</span><strong id="metaBestFloor">0F</strong></div>
             <div><span>最高Lv</span><strong id="metaBestLevel">1</strong></div>
             <div><span>踏破回数</span><strong id="metaClears">0</strong></div>
-            <div><span>発見図鑑</span><strong id="metaDex">0</strong></div>
+            <div><span>魔物発見</span><strong id="metaDex">0/13</strong></div>
           </div>
         </div>
         <div class="howto paper-panel compact">
           <h2>基本</h2>
           <p>1マス動くと敵も1回動く。敵を殴る、逃げる、道具を使う——すべてが1ターン。</p>
-          <div class="key-row"><kbd>↑↓←→</kbd><span>移動</span><kbd>Space</kbd><span>足元/決定</span><kbd>I</kbd><span>持ち物</span></div>
+          <div class="key-row"><kbd>↑↓←→</kbd><span>移動</span><kbd>Q/E/Z/C</kbd><span>斜め</span><kbd>Space</kbd><span>足元/決定</span><kbd>I</kbd><span>持ち物</span><kbd>M</kbd><span>魔物録</span></div>
         </div>
       </section>
 
@@ -80,6 +81,7 @@
             </div>
             <div class="desktop-actions paper-panel compact">
               <button id="inventoryBtn">持ち物</button>
+              <button id="monsterBookBtn">魔物録</button>
               <button id="waitBtn">その場で待つ</button>
               <button id="saveQuitBtn">中断して戻る</button>
             </div>
@@ -87,13 +89,16 @@
         </div>
 
         <div class="mobile-controls">
-          <button class="dpad up" data-move="0,-1">▲</button>
-          <button class="dpad left" data-move="-1,0">◀</button>
-          <button class="dpad center" id="mobileAction">●</button>
-          <button class="dpad right" data-move="1,0">▶</button>
-          <button class="dpad down" data-move="0,1">▼</button>
-          <button class="tool-btn" id="mobileInventory">道具</button>
-          <button class="tool-btn" id="mobileWait">待つ</button>
+          <div class="mobile-dpad">
+            <button class="dpad diag" data-move="-1,-1">↖</button><button class="dpad" data-move="0,-1">▲</button><button class="dpad diag" data-move="1,-1">↗</button>
+            <button class="dpad" data-move="-1,0">◀</button><button class="dpad center" id="mobileAction">●</button><button class="dpad" data-move="1,0">▶</button>
+            <button class="dpad diag" data-move="-1,1">↙</button><button class="dpad" data-move="0,1">▼</button><button class="dpad diag" data-move="1,1">↘</button>
+          </div>
+          <div class="mobile-tools">
+            <button class="tool-btn" id="mobileInventory">道具</button>
+            <button class="tool-btn" id="mobileBestiary">魔物録</button>
+            <button class="tool-btn" id="mobileWait">待つ</button>
+          </div>
         </div>
       </section>
 
@@ -121,6 +126,22 @@
       <div class="modal-head"><div><span class="eyebrow">INVENTORY</span><h2>持ち物</h2></div><button class="icon-btn" data-close-modal>×</button></div>
       <div id="inventoryList" class="inventory-list"></div>
       <div class="inventory-help">道具を選ぶと「使う / 装備 / 投げる / 置く」が表示されます。</div>
+    </div>
+  </div>
+
+  <div id="bestiaryModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-bestiary></div>
+    <div class="modal-card bestiary-card paper-panel">
+      <div class="modal-head">
+        <div><span class="eyebrow">MONSTER ARCHIVE</span><h2>魔物録</h2></div>
+        <button class="icon-btn" data-close-bestiary>×</button>
+      </div>
+      <div class="bestiary-toolbar">
+        <strong id="bestiarySummary">発見 0 / 13種</strong>
+        <label>階層 <select id="bestiaryFloor"><option value="0">全階層</option></select></label>
+      </div>
+      <p class="bestiary-help">遭遇した魔物だけ能力が開示されます。階層を選ぶと、その階に出現する魔物候補を確認できます。</p>
+      <div id="bestiaryList" class="bestiary-list"></div>
     </div>
   </div>
 
