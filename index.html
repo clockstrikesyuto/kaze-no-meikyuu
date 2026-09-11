@@ -44,7 +44,7 @@
         <div class="howto paper-panel compact">
           <h2>基本</h2>
           <p>1マス動くと敵も1回動く。敵を殴る、逃げる、道具を使う——すべてが1ターン。</p>
-          <div class="key-row"><kbd>↑↓←→</kbd><span>移動</span><kbd>Q/E/Z/C</kbd><span>斜め</span><kbd>Space</kbd><span>足元/決定</span><kbd>I</kbd><span>持ち物</span><kbd>M</kbd><span>魔物録</span></div>
+          <div class="key-row"><kbd>↑↓←→ / WASD</kbd><span>上下左右に移動・隣接攻撃</span><kbd>Space</kbd><span>足元/決定</span><kbd>I</kbd><span>持ち物</span><kbd>M</kbd><span>魔物録</span></div>
         </div>
       </section>
 
@@ -89,10 +89,10 @@
         </div>
 
         <div class="mobile-controls">
-          <div class="mobile-dpad">
-            <button class="dpad diag" data-move="-1,-1">↖</button><button class="dpad" data-move="0,-1">▲</button><button class="dpad diag" data-move="1,-1">↗</button>
-            <button class="dpad" data-move="-1,0">◀</button><button class="dpad center" id="mobileAction">●</button><button class="dpad" data-move="1,0">▶</button>
-            <button class="dpad diag" data-move="-1,1">↙</button><button class="dpad" data-move="0,1">▼</button><button class="dpad diag" data-move="1,1">↘</button>
+          <div class="mobile-dpad four-way">
+            <span class="dpad-space"></span><button class="dpad" data-move="0,-1" aria-label="上へ">▲</button><span class="dpad-space"></span>
+            <button class="dpad" data-move="-1,0" aria-label="左へ">◀</button><button class="dpad center" id="mobileAction" aria-label="足元・決定">●</button><button class="dpad" data-move="1,0" aria-label="右へ">▶</button>
+            <span class="dpad-space"></span><button class="dpad" data-move="0,1" aria-label="下へ">▼</button><span class="dpad-space"></span>
           </div>
           <div class="mobile-tools">
             <button class="tool-btn" id="mobileInventory">道具</button>
@@ -128,6 +128,7 @@
       <div class="inventory-help">道具を選ぶと「使う / 装備 / 投げる / 置く」が表示されます。</div>
     </div>
   </div>
+
 
   <div id="bestiaryModal" class="modal" aria-hidden="true">
     <div class="modal-backdrop" data-close-bestiary></div>
