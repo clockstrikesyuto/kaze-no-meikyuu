@@ -59,9 +59,16 @@
         </div>
 
         <div class="game-layout">
-          <div class="viewport-wrap">
+          <div class="viewport-wrap" id="viewportWrap">
             <canvas id="gameCanvas" width="768" height="768" aria-label="ダンジョン"></canvas>
+            <canvas id="mobileMiniCanvas" width="120" height="120" aria-label="ミニマップ"></canvas>
+            <div id="stageChip" class="stage-chip">風草の遺跡</div>
             <div id="floorBanner" class="floor-banner"></div>
+            <div id="monsterHouseAlarm" class="monster-house-alarm" aria-hidden="true">
+              <div class="alarm-bars"></div>
+              <strong>MONSTER HOUSE</strong>
+              <span>魔物の気配が一斉に目覚めた！</span>
+            </div>
             <div id="toast" class="toast"></div>
           </div>
 
@@ -88,8 +95,14 @@
           </aside>
         </div>
 
+        <div class="mobile-status-strip">
+          <span id="mobileWeapon">⚔ 素手</span>
+          <span id="mobileShield">🛡 なし</span>
+          <span id="mobileTurn">0T</span>
+        </div>
+
         <div class="mobile-controls">
-          <div class="mobile-dpad four-way">
+          <div class="mobile-dpad four-way" aria-label="方向操作">
             <span class="dpad-space"></span><button class="dpad" data-move="0,-1" aria-label="上へ">▲</button><span class="dpad-space"></span>
             <button class="dpad" data-move="-1,0" aria-label="左へ">◀</button><button class="dpad center" id="mobileAction" aria-label="足元・決定">●</button><button class="dpad" data-move="1,0" aria-label="右へ">▶</button>
             <span class="dpad-space"></span><button class="dpad" data-move="0,1" aria-label="下へ">▼</button><span class="dpad-space"></span>
@@ -129,7 +142,6 @@
     </div>
   </div>
 
-
   <div id="bestiaryModal" class="modal" aria-hidden="true">
     <div class="modal-backdrop" data-close-bestiary></div>
     <div class="modal-card bestiary-card paper-panel">
@@ -146,6 +158,6 @@
     </div>
   </div>
 
-  <script src="loader.js"></script>
+  <script src="loader.v4.js"></script>
 </body>
 </html>
