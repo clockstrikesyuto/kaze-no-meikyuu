@@ -14,15 +14,19 @@ const unpackParts = async (paths) => {
   return new Response(stream).text();
 };
 
+const loadText = async (path) => {
+  const r = await fetch(path, { cache: 'no-store' });
+  if (!r.ok) throw new Error(`${path}: ${r.status}`);
+  return r.text();
+};
+
 try {
   const css = await unpackParts(['./v5-css.gz.part.00?v=5']);
   const style = document.createElement('style');
   style.textContent = css;
   document.head.appendChild(style);
 
-  const dataRes = await fetch('./v5-data.js?v=5', { cache: 'no-store' });
-  if (!dataRes.ok) throw new Error(`v5-data.js: ${dataRes.status}`);
-  (0, eval)(await dataRes.text());
+  (0, eval)(await loadText('./v5-data.js?v=5'));
 
   const world = await unpackParts([
     './v5-world.gz.part.00?v=5',
@@ -35,6 +39,8 @@ try {
     './v5-ui.gz.part.01?v=5'
   ]);
   (0, eval)(ui);
+
+  (0, eval)(await loadText('./v5-patch.js?v=5'));
 } catch (err) {
   console.error(err);
   const app = document.querySelector('#app');
