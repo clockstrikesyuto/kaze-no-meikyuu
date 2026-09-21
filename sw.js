@@ -1,4 +1,4 @@
-const CACHE='kaze-no-meikyuu-v5';
+const CACHE='kaze-no-meikyuu-v5r1';
 const ASSETS=[
   './','./index.html','./loader.v5.js','./v5-data.js','./v5-patch.js',
   './v5-world.gz.part.00','./v5-world.gz.part.01',
